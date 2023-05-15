@@ -1,6 +1,7 @@
-import Appshell from '@/components/custom/appshell'
+"use client"
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { SessionProvider } from 'next-auth/react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,13 +12,17 @@ export const metadata = {
 
 export default function RootLayout({
   children,
+  session
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
+  session: any
 }) {
   return (
     <html className="" lang="en">
       <body className={inter.className}>
+        <SessionProvider session={session}>
           {children}
+        </SessionProvider>
       </body>
     </html>
   )
