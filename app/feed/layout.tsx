@@ -14,7 +14,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <Appshell>
+    <Appshell
+      sidebar={true}>
         {children}
     </Appshell>
   )
