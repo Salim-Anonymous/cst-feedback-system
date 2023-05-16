@@ -3,25 +3,26 @@ import Sidebar from './sidebar'
 import Header from './header'
 
 type AppShellProps = {
-    children: React.ReactNode
+    children: React.ReactNode,
+    sidebar?: boolean
 }
 
-function Appshell({children}:AppShellProps) {
+function Appshell({children,sidebar}:AppShellProps) {
 
     return (
     <div
         className='w-full h-screen dark:bg-gradient-to-b dark:from-gray-900 dark:to-gray-600 dark:bg-gradient-to-r'
     >
         <div
-            className='fixed top-0 min-h-screen right-0 w-3/4 pt-16 bg-white dark:bg-white/20 bg-backdrop bg-filter'
+            className={`fixed top-0 min-h-screen right-0 ${sidebar?"w-3/4":"w-full"} pt-16 bg-white dark:bg-white/20 bg-backdrop bg-filter`}
         >
             {children}
         </div>
-        <div
+        {sidebar &&<div
             className='fixed left-0 shadow-xl top-0 pt-16 w-1/4 h-screen bg-white dark:bg-black/20 bg-backdrop bg-filter'
         >
             <Sidebar />
-        </div>
+        </div>}
         <div
             className='fixed h-16 shadow-lg top-0 right-0 w-full bg-white dark:bg-black/90 bg-backdrop bg-filter'
         >
